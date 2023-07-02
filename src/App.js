@@ -31,7 +31,12 @@ class App extends Component {
           Toggle
         </button>
         <br />
-        <Transition in={this.state.showBlock} timeout={1000} mountOnEnter unmountOnExit>
+        <Transition
+          in={this.state.showBlock}
+          timeout={1000}
+          mountOnEnter
+          unmountOnExit
+        >
           {(state) => (
             <div
               style={{
@@ -45,9 +50,14 @@ class App extends Component {
             />
           )}
         </Transition>
-        {this.state.modalIsOpen ? (
-          <Modal show={this.state.modalIsOpen} closed={this.closedModal} />
-        ) : null}
+        <Transition
+          in={this.state.modalIsOpen}
+          timeout={300}
+          mountOnEnter
+          unmountOnExit
+        >
+          {(state) => <Modal show={state} closed={this.closedModal} />}
+        </Transition>
         {this.state.modalIsOpen ? (
           <Backdrop show={this.state.modalIsOpen} />
         ) : null}
